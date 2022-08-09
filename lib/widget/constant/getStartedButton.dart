@@ -12,8 +12,6 @@ class getStartedButton extends StatelessWidget {
       onTap: () async{
         final pref=await SharedPreferences.getInstance();
         pref.setBool('showHome', true);
-
-
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const SignInScreen()),

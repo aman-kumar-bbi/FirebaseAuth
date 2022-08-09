@@ -7,14 +7,14 @@ class SignInBloc extends Bloc<SignInEvent,SignInState>{
 SignInBloc():super(signInInitialState()){
 
 on<SignInTextChangedEvent>((event, emit) {
-  if (event.emailValue=='') {
-    emit (signInErrorState("please enter a valid email address"));
-  }else if(event.passwordValue.length<8){
-    emit (signInErrorState("please enter a vaild password"));
-  }
-  else{
+  // if (event.emailValue=='') {
+  //   emit (signInErrorState("please enter a valid email address"));
+  // }else if(event.passwordValue.length<8){
+  //   emit (signInErrorState("please enter a vaild password"));
+  // }
+  // else{
     emit (signInValidState()); 
-  }
+  // }
 });
 
 on<SignInSubmittedEvent>((event, emit) {

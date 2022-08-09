@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_application_1/sharePreference/sharePreference.dart';
 import 'package:flutter_application_1/widget/constant/constantColor.dart';
 import 'package:flutter_application_1/widget/constant/getStartedButton.dart';
 import 'package:flutter_application_1/widget/constant/constantText.dart';
 import 'package:flutter_application_1/widget/screens/signInScreeen/bloc/sign_in_bloc.dart';
 import 'package:flutter_application_1/widget/screens/signInScreeen/signInScreen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Getstarted extends StatelessWidget {
   const Getstarted({Key? key}) : super(key: key);
@@ -14,7 +16,7 @@ class Getstarted extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: constColor().GetstartedScreenColor, 
+      backgroundColor: constColor().GetstartedScreenColor,
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -31,14 +33,17 @@ class Getstarted extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
             GestureDetector(
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => BlocProvider(
-                          create: (context) => SignInBloc(),
-                          child: SignInScreen(),
-                        )),
-              ),
+              onTap: () async {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BlocProvider(
+                            create: (context) => SignInBloc(),
+                            child: SignInScreen(),
+                          )),
+                );
+                await sharedPreferences().isShowHome();
+              },
               child: Container(
                 height: 40,
                 width: 140,

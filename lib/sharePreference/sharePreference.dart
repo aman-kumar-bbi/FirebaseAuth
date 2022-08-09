@@ -2,21 +2,16 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-class UserName {
-    Future storingFirstNameInDB(String FirstName) async {
+class sharedPreferences {
+  Future isShowHome() async {
     final pref = await SharedPreferences.getInstance();
-    pref.setString('firstName',FirstName);
+    pref.setBool('showHome', true);
   }
 
-  Future storingLastNameInDB(String SecondName) async {
-    final pref = await SharedPreferences.getInstance();
-    pref.setString('last_name', SecondName);
-  }
 
-  Future<String?> getFirstName()async{
+  Future<bool?> returnIsShowHomePage() async {
     final pref = await SharedPreferences.getInstance();
-    String FirstName=pref.getString('firstName').toString();
-    // var decoded=jsonDecode(FirstName);
-    return FirstName;
+      final showHome =pref.getBool('showHome');
+      return showHome;
   }
 }

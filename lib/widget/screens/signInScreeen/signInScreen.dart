@@ -28,7 +28,6 @@ void initState() {
 
 TextEditingController EmailController = TextEditingController();
 TextEditingController PasswordController = TextEditingController();
-const Color colorFortheScreen = Color.fromRGBO(42, 59, 113, 1);
 
 class _SignInScreenState extends State<SignInScreen> {
   @override
@@ -59,21 +58,21 @@ class _SignInScreenState extends State<SignInScreen> {
                       TextFormField(
                         validator: (value) =>
                             value!.isEmpty ? 'Email cannot be blank' : null,
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                         cursorColor: Colors.white,
                         decoration: InputDecoration(
-                           enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white),
-                          ),
+                            enabledBorder: const UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
+                            focusedBorder: const UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white),
+                            ),
                             fillColor: Colors.white,
                             label: Text(
                               allText().userEmail,
-                              style: TextStyle(color: Colors.white),
+                              style: const TextStyle(color: Colors.white),
                             ),
-                            errorStyle: TextStyle(color: Colors.white)),
+                            errorStyle: const TextStyle(color: Colors.white)),
                         controller: EmailController,
                         onChanged: (val) {
                           BlocProvider.of<SignInBloc>(context).add(
@@ -92,16 +91,16 @@ class _SignInScreenState extends State<SignInScreen> {
                         keyboardType: TextInputType.text,
                         obscureText: !_passwordVisible,
                         decoration: InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
+                          enabledBorder: const UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
                           ),
-                          focusedBorder: UnderlineInputBorder(
+                          focusedBorder: const UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),
                           ),
                           fillColor: Colors.white,
-                          errorStyle: TextStyle(color: Colors.white),
+                          errorStyle: const TextStyle(color: Colors.white),
                           label: Text(allText().userPassword,
-                              style: TextStyle(color: Colors.white)),
+                              style: const TextStyle(color: Colors.white)),
                           suffixIcon: IconButton(
                             icon: Icon(
                               _passwordVisible
@@ -144,9 +143,9 @@ class _SignInScreenState extends State<SignInScreen> {
                           children: [
                             InkWell(
                               onTap: () {
-                                if (validateAndSave() == true) {
+                              
                                   if (state is signInValidState) {
-                                    return null;
+                                   FirebaseFunction().signIn(context, EmailController, PasswordController);
                                   } else {
                                     const snackBar = SnackBar(
                                       content: Text(
@@ -155,7 +154,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                     ScaffoldMessenger.of(context)
                                         .showSnackBar(snackBar);
                                   }
-                                }
+                          
                               },
                               child: Container(
                                 height: height * 0.04,
@@ -208,9 +207,10 @@ class _SignInScreenState extends State<SignInScreen> {
   validateAndSave() {
     final FormState? form = _formKey.currentState;
     if (form!.validate()) {
-      FirebaseFunction().signIn(context, EmailController, PasswordController);
+      return true;
     } else {
       print('Form is invalid');
+      return false;
     }
   }
 }

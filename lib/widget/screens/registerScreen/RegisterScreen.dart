@@ -194,8 +194,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   validateAndSave() {
     final FormState? form = _formKey.currentState;
     if (form!.validate()) {
-      UserName().storingFirstNameInDB(FirstNameController.text);
-      UserName().storingLastNameInDB(" ${LastNameController.text}");
+      // UserName().storingFirstNameInDB(FirstNameController.text);
+      // UserName().storingLastNameInDB(" ${LastNameController.text}");
       FirebaseFunction().signup(
           context, EmailController, PasswordController, FirstNameController.text," ${ LastNameController.text}");
     } else {

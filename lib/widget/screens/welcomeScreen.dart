@@ -37,17 +37,7 @@ class _welcomePageState extends State<welcomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // print({"name ${CurrUser?.displayName}"});
-    // print("email ${CurrUser?.email}");
-    // print("name ${CurrUser?.displayName}");
-    
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => setState(() {
-          print("button pressed");
-          print({"name ${CurrUser?.displayName}"});
-        }),
-      ),
       appBar: AppBar(
         title: Text("Details"),
         centerTitle: true,
