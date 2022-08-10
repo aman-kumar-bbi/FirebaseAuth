@@ -20,6 +20,7 @@ class MyHomePage extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context,snapshot){
         if (snapshot.hasData) {
+          print("welecomScreen ${snapshot.hasData}");
           return welcomePage();
           
         }else if(snapshot.hasError){

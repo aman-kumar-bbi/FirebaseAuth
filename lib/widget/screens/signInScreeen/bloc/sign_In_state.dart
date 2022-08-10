@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/widget/screens/signInScreeen/signInScreen.dart';
+
 abstract class SignInState {}
 
 
@@ -11,4 +14,6 @@ class signInValidState extends SignInState {}
 //   signInErrorState(this.errorMessage);
 // } 
 
-class signInLoadingState extends SignInState {} 
+class signInLoadingState extends SignInState {
+ 
+} 
