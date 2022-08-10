@@ -23,8 +23,7 @@ class FirebaseFunction {
       User? user = result.user;
       final Name = await user!.updateProfile(displayName: FirstName + LastName);
         Navigator.pop(context);
-       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => SignInScreen()));
+
     } on FirebaseAuthException catch (e) {
       var error = e.toString();
 

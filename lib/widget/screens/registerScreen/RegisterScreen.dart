@@ -204,37 +204,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
   validateAndSave() {
     final FormState? form = _formKey.currentState;
     if (form!.validate()) {
-      // UserName().storingFirstNameInDB(FirstNameController.text);
-      // UserName().storingLastNameInDB(" ${LastNameController.text}");
-      // FirebaseFunction().signup(context, EmailController, PasswordController,
-      //     FirstNameController.text, " ${LastNameController.text}");
       return true;
     } else {
       print('Form is invalid');
       return false;
     }
   }
-
-  // void signup(BuildContext context, TextEditingController email,
-  //     TextEditingController password, String FirstName, String LastName) async {
-  //   try {
-  //     UserCredential result =
-  //         await FirebaseAuth.instance.createUserWithEmailAndPassword(
-  //       email: email.text.trim(),
-  //       password: password.text,
-  //     );
-  //     User? user = result.user;
-  //     final Name = await user!.updateProfile(displayName: FirstName + LastName);
-  //     Navigator.pop(context);
-  //     Navigator.push(
-  //         context,
-  //         MaterialPageRoute(
-  //             builder: (context) => BlocProvider.value(
-  //                 value: SignInBloc(), child: const SignInScreen())));
-  //   } on FirebaseAuthException catch (e) {
-  //     var error = e.toString();
-
-  //     print(e);
-  //   }
-  // }
 }

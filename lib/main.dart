@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/widget/constant/loadingState.dart';
 import 'package:flutter_application_1/widget/home.dart';
 import 'package:flutter_application_1/widget/screens/signInScreeen/bloc/sign_in_bloc.dart';
 import 'package:flutter_application_1/widget/screens/signInScreeen/signInScreen.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:BlocProvider(create: (_) => SignInBloc(),child: const MyHomePage())
+      home:BlocProvider(create: (_) => SignInBloc(),child: const LoadingState())
 
     );
   }
